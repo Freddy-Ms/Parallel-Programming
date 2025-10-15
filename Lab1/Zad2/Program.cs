@@ -54,7 +54,7 @@ namespace Zad2
             {
                 AktualizujStatus(id, "Jedzie do kopalni...");
                 Thread.Sleep(czasPrzejazdu);
-
+                AktualizujStatus(id, "Czeka na wydobycie...");
                 semaforZloze.Wait();
                 int wydobyte = 0;
 
@@ -63,7 +63,7 @@ namespace Zad2
                     if (zlozo <= 0)
                     {
                         semaforZloze.Release();
-                        AktualizujStatus(id, "zakończył pracę.");
+                        AktualizujStatus(id, "Zakończył pracę.");
                         return;
                     }
 
@@ -72,7 +72,7 @@ namespace Zad2
                     wydobyte = doWydobycia;
                 }
 
-                AktualizujStatus(id, "Wydobywa węgiel......");
+                AktualizujStatus(id, "Wydobywa węgiel...");
                 for (int i = 0; i < wydobyte; i++)
                     Thread.Sleep(czasWydobyciaJednostki);
 
@@ -80,7 +80,7 @@ namespace Zad2
 
                 AktualizujStatus(id, "Transportuje do magazynu...");
                 Thread.Sleep(czasPrzejazdu);
-
+                AktualizujStatus(id, "Czeka na pusty magazyn...");
                 semaforMagazyn.Wait();
                 AktualizujStatus(id, "Rozładowuje węgiel...");
                 for (int i = 0; i < wydobyte; i++)
@@ -98,12 +98,6 @@ namespace Zad2
         {
             while (true)
             {
-                lock (lockObject)
-                {
-                    if (zlozo <= 0)
-                        break;
-                }
-
                 lock (consoleLock)
                 {
                     Console.SetCursorPosition(0, 0);

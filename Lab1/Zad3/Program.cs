@@ -59,8 +59,11 @@ namespace Zad3
             semaforZloze = new SemaphoreSlim(2, 2);
             semaforMagazyn = new SemaphoreSlim(1, 1);
             statusGornikow = new string[liczbaGornikow];
+            zlozo = 2000;
+            magazyn = 0;
 
             Task[] gornicy = new Task[liczbaGornikow];
+            
 
             for (int i = 0; i < liczbaGornikow; i++)
             {

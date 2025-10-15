@@ -38,6 +38,9 @@ namespace Zad1
         {
             while (true)
             {
+                Console.WriteLine($"Górnik {id} jedzie do kopalni...");
+                Thread.Sleep(czasPrzejazdu);
+
                 semaforZloze.Wait();
                 int wydobyte = 0;
 
@@ -46,6 +49,7 @@ namespace Zad1
                     if (zlozo <= 0)
                     {
                         semaforZloze.Release();
+                        Console.WriteLine($"=== Górnik {id} zakończył swoją pracę. ===");
                         return;
                     }
 
@@ -73,7 +77,6 @@ namespace Zad1
                 }
                 semaforMagazyn.Release();
 
-                Thread.Sleep(czasPrzejazdu);
             }
         }
     }
