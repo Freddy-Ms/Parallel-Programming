@@ -63,7 +63,6 @@ namespace Zad3
             magazyn = 0;
 
             Task[] gornicy = new Task[liczbaGornikow];
-            
 
             for (int i = 0; i < liczbaGornikow; i++)
             {
